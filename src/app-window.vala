@@ -473,7 +473,38 @@ public class AppWindow : Hdy.ApplicationWindow
             save_dialog.set_current_folder_uri (directory);
             /* Default filename to use when saving document. */
             /* To that filename the extension will be added, eg. "Scanned Document.pdf" */
-            save_dialog.set_current_name (_("Scanned Document") + "." + mime_type_to_extension (save_format));
+
+            var now = new DateTime.now_local ();
+
+            int day=now.get_day_of_month();
+            int month=now.get_month();
+            int year=now.get_year();
+
+            string dayStr;
+            string monthStr;
+            string yearStr;
+
+            if(day<10){
+                dayStr=@"0$day";
+            }
+            else {
+                dayStr=@"$day";
+            }
+
+            if(month<10){
+                monthStr=@"0$month";
+            }
+            else {
+                monthStr=@"$month";
+            }
+
+            yearStr=@"$year";
+
+            //string time = @"$(now.get_year())-$(now.get_month())-$(now.get_day_of_month())-$(now.get_hour())-$(now.get_minute())-$((int)now.get_seconds())";
+
+            string time = @"$(dayStr).$(monthStr).$(yearStr)";
+
+            save_dialog.set_current_name (_(time) + "." + mime_type_to_extension (save_format));
         }
 
         /* Filter to only show images by default */
