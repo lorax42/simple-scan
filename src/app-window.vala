@@ -471,19 +471,51 @@ public class AppWindow : Hdy.ApplicationWindow
             save_dialog.set_uri (book_uri);
         else {
             save_dialog.set_current_folder_uri (directory);
+            // EDIT
             /* Default filename to use when saving document. */
             /* To that filename the extension will be added, eg. "Scanned Document.pdf" */
 
             var now = new DateTime.now_local ();
 
+            int sec=now.get_second();
+            int min=now.get_minute();
+            int hour=now.get_hour();
             int day=now.get_day_of_month();
             int month=now.get_month();
             int year=now.get_year();
 
+            string secStr;
+            string minStr;
+            string hourStr;
             string dayStr;
             string monthStr;
             string yearStr;
 
+            // SECONDS
+            if(sec<10){
+                secStr=@"0$sec";
+            }
+            else {
+                secStr=@"$sec";
+            }
+
+            // MIN
+            if(min<10){
+                minStr=@"0$min";
+            }
+            else {
+                minStr=@"$min";
+            }
+
+            // HOUR
+            if(hour<10){
+                hourStr=@"0$hour";
+            }
+            else {
+                hourStr=@"$hour";
+            }
+
+            // DAY
             if(day<10){
                 dayStr=@"0$day";
             }
@@ -491,6 +523,7 @@ public class AppWindow : Hdy.ApplicationWindow
                 dayStr=@"$day";
             }
 
+            // MONTH
             if(month<10){
                 monthStr=@"0$month";
             }
@@ -498,11 +531,14 @@ public class AppWindow : Hdy.ApplicationWindow
                 monthStr=@"$month";
             }
 
+            // YEAR
             yearStr=@"$year";
 
             //string time = @"$(now.get_year())-$(now.get_month())-$(now.get_day_of_month())-$(now.get_hour())-$(now.get_minute())-$((int)now.get_seconds())";
 
-            string time = @"$(dayStr).$(monthStr).$(yearStr)";
+            //string time = @"$(dayStr).$(monthStr).$(yearStr)";
+            //string time = @"$(yearStr)$(monthStr)$(dayStr)";
+            string time = @"$(yearStr)$(monthStr)$(dayStr)$(hourStr)$(minStr)$(secStr)";
 
             save_dialog.set_current_name (_(time) + "." + mime_type_to_extension (save_format));
         }
