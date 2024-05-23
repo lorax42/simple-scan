@@ -537,8 +537,8 @@ public class AppWindow : Hdy.ApplicationWindow
             //string time = @"$(now.get_year())-$(now.get_month())-$(now.get_day_of_month())-$(now.get_hour())-$(now.get_minute())-$((int)now.get_seconds())";
 
             //string time = @"$(dayStr).$(monthStr).$(yearStr)";
-            //string time = @"$(yearStr)$(monthStr)$(dayStr)";
-            string time = @"$(yearStr)$(monthStr)$(dayStr)$(hourStr)$(minStr)$(secStr)";
+            string time = @"$(yearStr)$(monthStr)$(dayStr)";
+            //string time = @"$(yearStr)$(monthStr)$(dayStr)$(hourStr)$(minStr)$(secStr)";
 
             save_dialog.set_current_name (_(time) + "." + mime_type_to_extension (save_format));
         }
