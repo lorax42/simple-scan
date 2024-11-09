@@ -494,40 +494,35 @@ public class AppWindow : Hdy.ApplicationWindow
             // SECONDS
             if(sec<10){
                 secStr=@"0$sec";
-            }
-            else {
+            } else {
                 secStr=@"$sec";
             }
 
             // MIN
             if(min<10){
                 minStr=@"0$min";
-            }
-            else {
+            } else {
                 minStr=@"$min";
             }
 
             // HOUR
             if(hour<10){
                 hourStr=@"0$hour";
-            }
-            else {
+            } else {
                 hourStr=@"$hour";
             }
 
             // DAY
             if(day<10){
                 dayStr=@"0$day";
-            }
-            else {
+            } else {
                 dayStr=@"$day";
             }
 
             // MONTH
             if(month<10){
                 monthStr=@"0$month";
-            }
-            else {
+            } else {
                 monthStr=@"$month";
             }
 
